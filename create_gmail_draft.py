@@ -13,6 +13,7 @@ credentials = service_account.Credentials.from_service_account_file(
 # Create a Gmail API service instance
 service = build('gmail', 'v1', credentials=credentials)
 
+
 # Function to create a draft with the given subject, content, and recipient
 def create_draft(subject, content, recipient_email):
     message = {
@@ -27,6 +28,7 @@ def create_draft(subject, content, recipient_email):
         print(f"An error occurred: {error}")
         return None
 
+
 # # Read text from a file
 # file_path = 'your-file.txt'
 # with open(file_path, 'r', encoding='utf-8') as file:
@@ -40,7 +42,7 @@ def create_draft(subject, content, recipient_email):
 # draft = create_draft(draft_subject, text_content, recipient_email)
 #
 
-def save_draft(draft_subject,text_content,recipient_email):
+def save_draft(draft_subject, text_content, recipient_email):
     draft = create_draft(draft_subject, text_content, recipient_email)
     if draft:
         print(f"Draft '{draft_subject}' created successfully.")
