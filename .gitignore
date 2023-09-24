@@ -3,4 +3,4 @@ cold_email_generator.py
 .env
 *.iml
 .idea
-__pycache__
+__pycache__/

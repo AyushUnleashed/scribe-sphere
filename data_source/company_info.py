@@ -15,4 +15,9 @@ def fetch_company_info() -> Dict:
         "company_name": "portkey.ai",
         "company_description": """ Portkey enables companies to develop, launch, maintain & iterate over their generative AI apps and features faster. Companies can add observability, model management, experimentation and compliance to their products through an integration which takes less than a minute. """
     }
-    return info
+
+    info_3 = {
+        "company_name": "jar app",
+        "company_description": "Jar, a platform used to encourage savings habits in Indians by helping them save on a daily basis. "
+    }
+    return info_3
