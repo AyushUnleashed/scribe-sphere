@@ -49,8 +49,8 @@ def get_gpt_for_everyone_message(llm_prompt):
     gpt_response_text = fetch_gpt_response(llm_prompt)
 
     if gpt_response_text:
-        response_json = gpt_response_text.json()
-        message = response_json['output']['choices'][0]['text']
+
+        message = gpt_response_text
         # message = gpt_response_text
         print(f"\nHere is the personalized cold email for SDE intern/full time opportunity:\n{message}")
         return message
@@ -67,11 +67,12 @@ def generate_email(company_info="") -> str:
         company_info: Dict = fetch_company_info()
 
     # Prepare llm prompt
-    llm_prompt: str = prepare_llm_prompt(user_info, company_info)
+    # llm_prompt: str = prepare_llm_prompt(user_info, company_info)
+    llm_prompt_2: str = prepare_llm_prompt_2(user_info, company_info)
 
     # message = get_together_api_message(llm_prompt)
-    # message = get_gpt_for_everyone_message(llm_prompt)
-    message = fetch_openai_response(llm_prompt)
+    message = get_gpt_for_everyone_message(llm_prompt_2)
+    # message = fetch_openai_response(llm_prompt)
     return message
 
 
