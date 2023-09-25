@@ -5,4 +5,5 @@ cold_email_generator.py
 *.iml
 .idea
 __pycache__/
+generations/*
 token.json
