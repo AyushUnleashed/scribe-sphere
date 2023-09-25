@@ -1,0 +1,32 @@
+SUBJECT: Application for SDE Intern/Full-time Opportunity at Jar App
+
+CONTENT:
+Hello Team Jar App,
+
+I hope this email finds you well. My name is Ayush Yadav, and I am writing to express my strong interest in joining your team as a Software Development Engineer (SDE) intern or for a full-time position, as per your requirements.
+
+I was captivated by Jar App's mission to encourage savings habits in India, a goal that resonates deeply with me. Your innovative platform, designed to assist individuals in saving on a daily basis, showcases a commitment to financial well-being that I greatly admire.
+
+Allow me to introduce myself further. I am currently pursuing a Bachelor of Technology in Information Technology at Jabalpur Engineering College and maintain a CGPA of 7.84. My passion for software development is reflected in my professional experiences and projects.
+
+As a Product Engineering Intern at Dashtoon, I have honed my skills in Python, Docker, Kubernetes, and cloud services like AWS and Azure. I actively contributed to reducing training costs through GPU-based service conversion and played a vital role in implementing a robust logging pipeline for Kubernetes production settings. My experience extends to FastAPI backend development and the creation of automation scripts.
+
+Additionally, I have interned as an Android Developer at Online Thela, where I developed the OnlineThela Android app using Kotlin. My proficiency in technologies like Jetpack Navigation Component and API integration was crucial in creating a seamless user experience.
+
+I have also led projects like "BeFrend," a social platform for connecting college peers based on interests, and "NoteZen," a notes app with Firebase integration. These experiences have strengthened my skills in app development, UI/UX design, and backend technologies.
+
+Furthermore, my achievements include contributions to the WordPress-Android project, demonstrating my ability to collaborate effectively within development communities. I am also proud of my team's achievement as semifinalists in Flipkart Grid 4.0.
+
+My technical skills encompass a range of languages, databases, frameworks, and technologies, including C++, Kotlin, Python, Firebase, Docker, Kubernetes, and FastAPI, among others. My proficiency in Android development, coupled with my knowledge of cloud services, positions me as a versatile candidate for your team.
+
+I am excited about the opportunity to contribute to Jar App's mission and grow professionally within your organization. I am confident that my technical skills, innovative mindset, and dedication align with the values of Jar App.
+
+Thank you for considering my application. I have attached my resume for your convenience, and I look forward to the possibility of discussing how I can contribute to Jar App's success. Please feel free to contact me at ayushyadavcodes@gmail.com to schedule a conversation.
+
+I appreciate your time and consideration and eagerly await your response.
+
+Sincerely,
+
+Ayush Yadav
+
+VARIABLES: ['company_name', 'company_description']
