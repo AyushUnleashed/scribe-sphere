@@ -1,6 +1,8 @@
 venv
+client_secrets_scribe_sphere.json
 cold_email_generator.py
 .env
 *.iml
 .idea
 __pycache__/
+token.json
