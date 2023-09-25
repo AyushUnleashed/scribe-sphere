@@ -7,3 +7,9 @@ end with the user looking forward to hearing back from the company. It should be
 have much time.Use relevant details from User's experience & skills to write directed email If you add any fields as 
 variables use only this format eg: {variable1_name} & list them at the end line. eg: VARIABLES: ["variable1_name"] 
 All variables are , separated ,snake_case named, if no need for any variables, give VARIABLES: [None] """
+
+
+CLEAN_COMPANY_DESCRIPTION_PROMPT = """"
+I'll be pasting dump of text scrapped from a company website,
+reply only with json with only one key "company_info" value is string of company description, containing info about company. no explanation text
+"""
