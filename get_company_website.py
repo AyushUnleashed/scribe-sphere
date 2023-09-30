@@ -58,15 +58,18 @@ def get_company_website(company_name):
 
     return None
 
-def get_website_by_company_name():
-    company_name = "dusetch bak  "
+def get_website_by_company_name(company_name):
+
     website = get_company_website(company_name)
 
     if website:
         print(f"The website of {company_name} is {website}")
+        return website
     else:
         print(f"No website found for {company_name}")
+        return None
 
 if __name__ == "__main__":
+    company_name = "dusetch bak  "
     # Call the function to get the website link based on the company name
-    get_website_by_company_name()
+    get_website_by_company_name(company_name)

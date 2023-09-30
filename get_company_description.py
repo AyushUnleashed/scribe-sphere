@@ -31,35 +31,35 @@ def save_webpage(url, folder='generations'):
     else:
         print(f'Failed to retrieve webpage. Status code: {response.status_code}')
 
-
-def get_company_description(company_url):
-    try:
-        # Send an HTTP GET request to the company's website
-        response = requests.get(company_url)
-
-        # Check if the request was successful (status code 200)
-        if response.status_code == 200:
-            # Parse the HTML content of the page using BeautifulSoup
-            soup = BeautifulSoup(response.text, 'html.parser')
-
-            # Depending on the structure of the website, you may need to inspect the HTML
-            # and identify the element containing the company description.
-            # Replace 'YOUR_CSS_SELECTOR' with the appropriate CSS selector for the description.
-            description_element = soup.select_one('YOUR_CSS_SELECTOR')
-
-            # Check if the description element was found
-            if description_element:
-                # Extract the text from the element
-                company_description = description_element.get_text()
-                return company_description.strip()
-            else:
-                return "Description not found on the webpage."
-
-        else:
-            return f"Failed to fetch the webpage (Status Code: {response.status_code})"
-
-    except Exception as e:
-        return f"An error occurred: {str(e)}"
+#
+# def get_company_description(company_url):
+#     try:
+#         # Send an HTTP GET request to the company's website
+#         response = requests.get(company_url)
+#
+#         # Check if the request was successful (status code 200)
+#         if response.status_code == 200:
+#             # Parse the HTML content of the page using BeautifulSoup
+#             soup = BeautifulSoup(response.text, 'html.parser')
+#
+#             # Depending on the structure of the website, you may need to inspect the HTML
+#             # and identify the element containing the company description.
+#             # Replace 'YOUR_CSS_SELECTOR' with the appropriate CSS selector for the description.
+#             description_element = soup.select_one('YOUR_CSS_SELECTOR')
+#
+#             # Check if the description element was found
+#             if description_element:
+#                 # Extract the text from the element
+#                 company_description = description_element.get_text()
+#                 return company_description.strip()
+#             else:
+#                 return "Description not found on the webpage."
+#
+#         else:
+#             return f"Failed to fetch the webpage (Status Code: {response.status_code})"
+#
+#     except Exception as e:
+#         return f"An error occurred: {str(e)}"
 
 
 def prepare_llm_prompt(company_dump: str) -> str:
@@ -126,10 +126,8 @@ def process_info(text_content: str) -> str:
     return text_content
 
 
-if __name__ == '__main__':
-    # URL of the webpage you want to save
-    url2 = 'https://andyet.com'
-    url = 'https://www.bazaarvoice.com/'
+
+def get_company_info_from_url(url):
 
     # Call the save_webpage function with the URL
     # save_webpage(webpage_url)
@@ -146,3 +144,11 @@ if __name__ == '__main__':
         file.write(cleaned_company_info)
 
     print(f'Text content saved to "{filename}"')
+    return cleaned_company_info
+
+
+if __name__ == '__main__':
+    # URL of the webpage you want to save
+    url2 = 'https://andyet.com'
+    url = 'https://metaphor.systems/'
+    get_company_info_from_url(url)

@@ -7,6 +7,7 @@ from api.gpt_api import fetch_openai_response
 from api.prompts import BASE_PROMPT
 import os
 
+
 def prepare_llm_prompt_2(user_info: Dict, company_info: Dict) -> str:
     # Prepare the prompt for LLM.
     llm_prompt = BASE_PROMPT
@@ -59,12 +60,16 @@ def get_gpt_for_everyone_message(llm_prompt):
         return ""
 
 
-def generate_email(company_info="") -> str:
+def generate_email(company_info="", company_name="") -> str:
     # Fetch student and company info
 
     user_info: Dict = fetch_user_info()
-    if company_info == "":
-        company_info: Dict = fetch_company_info()
+    if company_info == "" and company_name != "":
+        # company_info: Dict = fetch_company_info()
+        from get_company_website import get_website_by_company_name
+        website_url = get_website_by_company_name(company_name)
+        from get_company_description import get_company_info_from_url
+        company_info = get_company_info_from_url(website_url)
 
     # Prepare llm prompt
     # llm_prompt: str = prepare_llm_prompt(user_info, company_info)
@@ -75,6 +80,7 @@ def generate_email(company_info="") -> str:
     save_message_to_file(message)
     # message = fetch_openai_response(llm_prompt)
     return message
+
 
 def save_message_to_file(message, folder_name="generations", file_name="generated_email.txt"):
     # Check if the folder exists, and if not, create it
