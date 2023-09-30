@@ -8,7 +8,7 @@ from api.prompts import BASE_PROMPT
 import os
 
 
-def prepare_llm_prompt_2(user_info: Dict, company_info: Dict) -> str:
+def prepare_llm_prompt_2(user_info: Dict, company_info) -> str:
     # Prepare the prompt for LLM.
     llm_prompt = BASE_PROMPT
     llm_prompt += f"\n ---"
@@ -19,7 +19,7 @@ def prepare_llm_prompt_2(user_info: Dict, company_info: Dict) -> str:
     return llm_prompt
 
 
-def prepare_llm_prompt(user_info: Dict, company_info: Dict) -> str:
+def prepare_llm_prompt(user_info: Dict, company_info) -> str:
     # Prepare the prompt for LLM.
     llm_prompt = f"\n ---"
     llm_prompt += f"\nUser's Details:\n{user_info}"
@@ -62,24 +62,35 @@ def get_gpt_for_everyone_message(llm_prompt):
 
 def generate_email(company_info="", company_name="") -> str:
     # Fetch student and company info
+    use_metaphor = True
 
     user_info: Dict = fetch_user_info()
     if company_info == "" and company_name != "":
-        # company_info: Dict = fetch_company_info()
-        from get_company_website import get_website_by_company_name
-        website_url = get_website_by_company_name(company_name)
-        from get_company_description import get_company_info_from_url
-        company_info = get_company_info_from_url(website_url)
 
-    # Prepare llm prompt
-    # llm_prompt: str = prepare_llm_prompt(user_info, company_info)
-    llm_prompt_2: str = prepare_llm_prompt_2(user_info, company_info)
+        if use_metaphor:
+            from get_company_description import get_company_info_from_name
+            company_info = get_company_info_from_name(company_name)
 
-    # message = get_together_api_message(llm_prompt)
-    message = get_gpt_for_everyone_message(llm_prompt_2)
-    save_message_to_file(message)
-    # message = fetch_openai_response(llm_prompt)
-    return message
+        else:
+            # company_info: Dict = fetch_company_info()
+            from get_company_website import get_website_by_company_name
+            website_url = get_website_by_company_name(company_name)
+            from get_company_description import get_company_info_from_url
+            company_info = get_company_info_from_url(website_url)
+
+    if company_info:
+        # Prepare llm prompt
+        pre_str = f"company name: {company_name} \n "
+        # llm_prompt: str = prepare_llm_prompt(user_info, company_info)
+        llm_prompt_2: str = prepare_llm_prompt_2(user_info, pre_str + company_info)
+
+        # message = get_together_api_message(llm_prompt)
+        message = get_gpt_for_everyone_message(llm_prompt_2)
+        save_message_to_file(message)
+        # message = fetch_openai_response(llm_prompt)
+        return message
+    else:
+        return "Something went wrong "
 
 
 def save_message_to_file(message, folder_name="generations", file_name="generated_email.txt"):
