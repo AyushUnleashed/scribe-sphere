@@ -11,6 +11,11 @@ SYSTEM_PROMPT = BASE_PROMPT
 
 chat_history = [{"role": "system", "content": SYSTEM_PROMPT}]
 
+
+def set_system_prompt(NEW_PROMPT):
+    global chat_history
+    chat_history = [{"role": "system", "content": NEW_PROMPT}]
+
 openai.api_key = os.getenv("OPEN_AI_API_KEY")
 
 

@@ -8,3 +8,4 @@ openai
 fuzzywuzzy
 python-Levenshtein
 beautifulsoup4
+pypdf2

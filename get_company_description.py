@@ -1,15 +1,23 @@
 # Get Company description from a link
 import os
 
+from api.gpt_api import set_system_prompt,fetch_openai_response
 from api.gpt_for_everyone import fetch_gpt_response
 from api.prompts import CLEAN_COMPANY_DESCRIPTION_PROMPT
 from scrap_html_from_page import save_text_from_webpage
 from metaphor.metaphor_company_description import get_extract_from_metaphor
 
-def prepare_llm_prompt(company_dump: str) -> str:
+def prepare_llm_prompt_2(company_dump: str) -> str:
     # Prepare the prompt for LLM.
     llm_prompt = CLEAN_COMPANY_DESCRIPTION_PROMPT
     llm_prompt += f"\n ---"
+    llm_prompt += f"\nCompany's Website Dump:\n{company_dump}"
+    return llm_prompt
+
+def prepare_llm_prompt(company_dump: str) -> str:
+    # Prepare the prompt for LLM.
+    set_system_prompt(CLEAN_COMPANY_DESCRIPTION_PROMPT)
+    llm_prompt = f"\n ---"
     llm_prompt += f"\nCompany's Website Dump:\n{company_dump}"
     return llm_prompt
 
@@ -17,7 +25,7 @@ def prepare_llm_prompt(company_dump: str) -> str:
 def clean_company_info_with_llm(llm_prompt):
     # Fetch llm response
 
-    gpt_response_text = fetch_gpt_response(llm_prompt)
+    gpt_response_text = fetch_openai_response(llm_prompt)
 
     if gpt_response_text:
 
